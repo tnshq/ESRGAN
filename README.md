@@ -1,4 +1,4 @@
-# esrgan
+# ESRGAN
 ESRGAN (Enhanced Super-Resolution Generative Adversarial Network)
 
 This project implements an ESRGAN model for enhancing image resolution using adversarial training. It includes the following features:
