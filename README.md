@@ -522,4 +522,3 @@ This section defines functions to calculate quantitative metrics (PSNR, SSIM, an
 5.  **Inference (Optional)**: Run the cells defining the inference and display functions. You can then use the testing code or the `upload_and_test()` function to apply the model to images.
 6.  **Evaluation (Optional)**: Run the cells defining the metric calculation functions and the cell to calculate and display PSNR, SSIM, and FID on the validation set. The output of this cell will include the calculated average PSNR, SSIM, and FID scores.
 
-This README content provides a detailed overview of your ESRGAN project notebook, explaining each major component and how it contributes to the overall image super-resolution task. It has been updated to reflect the successful metric calculations observed in the notebook outputs. You can further customize this by adding sections on specific results, visualizations, or parameters you used during training.
