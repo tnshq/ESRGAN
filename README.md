@@ -30,7 +30,7 @@ This section handles the initial setup, including mounting Google Drive (if usin
     # Setup Kaggle API
     !mkdir -p ~/.kaggle/
     !cp "/content/drive/MyDrive/kaggle/kaggle.json" ~/.kaggle/kaggle.json
-    !chmod 600 ~/.kaggle/kaggle.json
+    !chmod 600 ~/.kaggle.kaggle.json
     !python -m pip install -qq kaggle
 
     print("✅ Google Drive mounted and Kaggle API configured!")
@@ -398,7 +398,7 @@ Provides functions to use the trained generator model to perform super-resolutio
 
 ### 6. Evaluation Metrics
 
-This section defines functions to calculate quantitative metrics (PSNR, SSIM, LPIPS, and FID) to evaluate the performance of the trained model.
+This section defines functions to calculate quantitative metrics (PSNR, SSIM, LPIPS, and FID) to evaluate the performance of the trained model and then performs the calculation on the validation set.
 
 -   **Metric Functions (PSNR, SSIM, LPIPS)**:
     -   Defines functions `calculate_psnr`, `calculate_ssim`, and `calculate_lpips` using libraries like `torch`, `numpy`, `skimage`, and `lpips`.
@@ -432,12 +432,20 @@ This section defines functions to calculate quantitative metrics (PSNR, SSIM, LP
     ```
 
 -   **Metric Calculation and FID**:
-    -   This block generates super-resolution images for the entire validation set and calculates PSNR, SSIM, and FID.
-    -   It iterates through the validation HR images. For each, it gets/generates the LR version, generates the SR image using the trained model, and saves the generated SR image to a temporary directory (`fid_generated_sr`).
-    -   While doing this, it calculates the PSNR and SSIM for each generated SR/original HR pair and stores them.
-    -   After generating all SR images and calculating per-image metrics, it calculates the average PSNR and SSIM and prints them.
-    -   Finally, it uses the `cleanfid` library to calculate the FID score between the directory of original validation HR images and the directory of generated SR images.
-    -   The FID score is printed.
+    -   This block installs the `cleanfid` library, generates super-resolution images for the entire validation set, and then calculates and prints PSNR, SSIM, and FID.
+    -   It first installs `cleanfid`:
+        ```python
+        !pip install -q cleanfid
+        print("✅ cleanfid installed!")
+        ```
+    -   It then proceeds to:
+        -   Define paths for validation HR, LR, and a temporary directory for generated SR images.
+        -   Load the trained generator model.
+        -   Iterate through the validation HR images. For each, it gets/generates the LR version, generates the SR image using the trained model, and saves the generated SR image to the temporary directory.
+        -   While doing this, it calculates the PSNR and SSIM for each generated SR/original HR pair and stores them.
+        -   After generating all SR images and calculating per-image metrics, it calculates and prints the average PSNR and SSIM scores.
+        -   Finally, it uses the `cleanfid` library to calculate the FID score between the directory of original validation HR images and the directory of generated SR images.
+        -   The calculated metrics are printed to the output of this cell.
 
     ```python
     from cleanfid import fid
@@ -449,6 +457,10 @@ This section defines functions to calculate quantitative metrics (PSNR, SSIM, LP
     from skimage.metrics import structural_similarity as ssim
     import math
     import torch.nn.functional as F
+
+    # Install cleanfid
+    !pip install -q cleanfid
+    print("✅ cleanfid installed!")
 
     # Define paths and create directory for generated images
     valid_hr_path = f'{project_path}/dataset/valid/hr'
@@ -499,4 +511,6 @@ This section defines functions to calculate quantitative metrics (PSNR, SSIM, LP
 3.  **Dataset Class**: Run the cell defining the `DIV2KDataset` class.
 4.  **Training**: Run the cell to set up the training and the cell containing the training loop. You can choose to train from scratch or load an existing model if available.
 5.  **Inference (Optional)**: Run the cells defining the inference and display functions. You can then use the testing code or the `upload_and_test()` function to apply the model to images.
-6.  **Evaluation (Optional)**: Run the cells defining the metric calculation functions and the cell to calculate and display PSNR, SSIM, and FID on the validation set.
+6.  **Evaluation (Optional)**: Run the cells defining the metric calculation functions and the cell to calculate and display PSNR, SSIM, and FID on the validation set. The output of this cell will include the calculated average PSNR, SSIM, and FID scores.
+
+This README content provides a detailed overview of your ESRGAN project notebook, explaining each major component and how it contributes to the overall image super-resolution task. It has been updated to reflect the successful metric calculations observed in the notebook outputs. You can further customize this by adding sections on specific results, visualizations, or parameters you used during training.
