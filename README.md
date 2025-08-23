@@ -331,6 +331,7 @@ This section sets up the training environment, initializes models, loss function
         # ... save final model ...
     # ... else branches for skipping or no dataset ...
     ```
+    <img width="676" height="179" alt="Screenshot 2025-08-23 at 8 51 03 PM" src="https://github.com/user-attachments/assets/8e7ad398-d22a-4028-8f0e-86d3578db1be" />
 
 ### 5. Inference
 
@@ -380,6 +381,8 @@ Provides functions to use the trained generator model to perform super-resolutio
         # ... displays three-way comparison (LR, SR, original HR) ...
     # ... else branches for failure or no model/images ...
     ```
+    <img width="1076" height="711" alt="Screenshot 2025-08-23 at 8 50 45 PM" src="https://github.com/user-attachments/assets/c36fe151-2099-449d-b2e7-45980e4f4097" />
+
 
 -   **Upload and Test Function**:
     -   Provides a function (`upload_and_test`) that allows you to upload your own image (if running in Colab), perform super-resolution on it, display the comparison, and download the result.
@@ -395,10 +398,14 @@ Provides functions to use the trained generator model to perform super-resolutio
         # ... calls inference_single_image ...
         # ... displays comparison, downloads result ...
     ```
+    <img width="1083" height="349" alt="Screenshot 2025-08-23 at 8 48 42 PM" src="https://github.com/user-attachments/assets/a2c3ed5e-95ff-44b9-a396-5ba27df64385" />
+    <img width="1007" height="691" alt="Screenshot 2025-08-23 at 8 48 52 PM" src="https://github.com/user-attachments/assets/86d67895-1c60-4229-b330-0690de9b95ca" />
+
+
 
 ### 6. Evaluation Metrics
 
-This section defines functions to calculate quantitative metrics (PSNR, SSIM, LPIPS, and FID) to evaluate the performance of the trained model and then performs the calculation on the validation set.
+This section defines functions to calculate quantitative metrics (PSNR, SSIM, and FID) to evaluate the performance of the trained model and then performs the calculation on the validation set.
 
 -   **Metric Functions (PSNR, SSIM, LPIPS)**:
     -   Defines functions `calculate_psnr`, `calculate_ssim`, and `calculate_lpips` using libraries like `torch`, `numpy`, `skimage`, and `lpips`.
@@ -503,6 +510,8 @@ This section defines functions to calculate quantitative metrics (PSNR, SSIM, LP
     # import shutil
     # shutil.rmtree(generated_sr_path)
     ```
+<img width="333" height="81" alt="Screenshot 2025-08-23 at 9 20 07 PM" src="https://github.com/user-attachments/assets/bb40eb2b-34b4-4712-a5df-5858d314a90e" />
+<img width="771" height="115" alt="Screenshot 2025-08-23 at 9 36 15 PM" src="https://github.com/user-attachments/assets/95dbdbe6-7283-4b83-825f-59539b298376" />
 
 ## How to Use
 
