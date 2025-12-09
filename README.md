@@ -513,12 +513,4 @@ This section defines functions to calculate quantitative metrics (PSNR, SSIM, an
 <img width="333" height="81" alt="Screenshot 2025-08-23 at 9 20 07 PM" src="https://github.com/user-attachments/assets/bb40eb2b-34b4-4712-a5df-5858d314a90e" />
 <img width="771" height="115" alt="Screenshot 2025-08-23 at 9 36 15 PM" src="https://github.com/user-attachments/assets/95dbdbe6-7283-4b83-825f-59539b298376" />
 
-## How to Use
-
-1.  **Setup**: Run the initial cells to mount Google Drive, configure Kaggle, download, and organize the dataset, and install libraries.
-2.  **Model Definition**: Run the cells defining the `ResidualDenseBlock`, `RRDB`, `Generator`, and `Discriminator` classes.
-3.  **Dataset Class**: Run the cell defining the `DIV2KDataset` class.
-4.  **Training**: Run the cell to set up the training and the cell containing the training loop. You can choose to train from scratch or load an existing model if available.
-5.  **Inference (Optional)**: Run the cells defining the inference and display functions. You can then use the testing code or the `upload_and_test()` function to apply the model to images.
-6.  **Evaluation (Optional)**: Run the cells defining the metric calculation functions and the cell to calculate and display PSNR, SSIM, and FID on the validation set. The output of this cell will include the calculated average PSNR, SSIM, and FID scores.
 
